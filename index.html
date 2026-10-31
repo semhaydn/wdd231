@@ -1,102 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semih Aydin - WDD 230 - Web Frontend Development</title>
-    <meta name="description" content="Semih Aydin's course assignment portal for WDD 230 - Web Frontend Development. Learn about web development, design principles, and more.">
+    <meta name="description" content="Semih Aydin's WDD 231 course home page. Learn about his studies in software development at BYU-Idaho and explore the Web and Computer Programming certificate courses.">
     <meta name="author" content="Semih Aydin">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/base.css">
+    <meta name="theme-color" content="#102b3f">
+    <title>Semih Aydin | WDD 231 Course Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css">
-    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
-    <meta property="og:title" content="Semih Aydin's WDD 230 Portal">
-    <meta property="og:description" content="Learn about web development, design principles, and more.">
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/dates.js" defer></script>
+    <script src="scripts/courses.js" defer></script>
+    <meta property="og:title" content="Semih Aydin | WDD 231 Course Home">
+    <meta property="og:description" content="A course home page for Semih Aydin, a Software Development student at BYU-Idaho.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://semhaydn.github.io/wdd230/images/image.webp">
-    <meta property="og:url" content="https://semhaydn.github.io/wdd230/">
+    <meta property="og:image" content="https://semhaydn.github.io/wdd231/images/image.webp">
+    <meta property="og:url" content="https://semhaydn.github.io/wdd231/">
 </head>
-
-<body>
-    <header>
-        <div class="profile">
-            <img src="images/image.webp" alt="Profile Picture">
-            <h1>Semih Aydin</h1>
-        </div>
-        <nav>
-            <div class="hamburger-menu">
-                <div class="hamburger-icon" onclick="toggleMenu()">
-                    &#9776;
-                </div>
-                <ul class="menu-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="lesson03/chamber-site-plan.html">Site Plan</a></li>
+<body class="course-home">
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="Semih Aydin home">
+                <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-labelledby="brand-title">
+                    <title id="brand-title">Semih Aydin monogram</title>
+                    <rect x="1" y="1" width="46" height="46" rx="10" fill="#0d8c8a" />
+                    <path d="M31.8 15.2c-2-1.6-4.5-2.4-7.5-2.4-5.3 0-9 2.8-9 7 0 3.7 2.8 5.5 8.3 6.7l2.2.5c2.6.6 3.8 1.3 3.8 2.8 0 1.8-1.8 2.9-4.7 2.9-3.1 0-5.8-1.1-8-3.2l-3.3 4.1c2.8 2.6 6.8 4 11.1 4 6.1 0 10.1-3.1 10.1-7.7 0-3.8-2.4-5.8-8-7l-2.4-.5c-2.7-.6-4-1.2-4-2.7s1.6-2.5 4-2.5c2.4 0 4.6.7 6.4 2.1z" fill="#fff" />
+                </svg>
+                <span class="student-name">Semih Aydin</span>
+            </a>
+            <nav class="primary-nav" aria-label="Primary navigation">
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="primary-menu">
+                    <li><a href="index.html" aria-current="page">Home</a></li>
                     <li><a href="chamber/">Chamber</a></li>
-                    <li><a href="https://www.byui.edu/" target="_blank">BYU-Idaho</a></li>
-                    <li><a href="https://www.churchofjesuschrist.org/study/scriptures" target="_blank">Scripture</a></li>
+                    <li><a href="Scoots/">Final</a></li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>WDD 230: Web Frontend Development</h2>
-            <hr>
-        </section>
-        <div class="hero">
-            <picture>
-                <source media="(max-width: 400px)" srcset="images/freiberg-germany-temple-lds-664670-wallpaper-small.webp">
-                <source media="(min-width: 960px)" srcset="images/freiberg-germany-temple-lds-664670-wallpaper.webp">
-                <img src="images/freiberg-germany-temple-lds-664670-wallpaper.webp" alt="Freiberg Temple- 2022">
-            </picture>
-            <div class="herolabel">
-                <p>Freiberg Temple</p>
+    <main class="home-main">
+        <h1 class="page-title">Home</h1>
+        <section class="content-section about-section" aria-labelledby="about-title">
+            <h2 id="about-title">About Me</h2>
+            <div class="about-content">
+                <img class="portrait" src="images/image.webp" alt="Portrait of Semih Aydin" width="720" height="720">
+                <p>I am Semih Aydin, a Software Development student at BYU-Idaho. I am building a strong foundation in web development, accessible design, and programming.</p>
             </div>
-        </div>
-        <div id="links"></div> <!-- Container for dynamic links -->
-        <section class="card">
-            <h3>Learning Activities</h3>
-            <ul>
-                <!-- Populate this list with learning activities throughout the course -->
-                <li><a href="#">01: Holy Layout | JS Pen</a></li>
-                <li><a href="lesson02/design-principles.html">02: Media Query | Design Principles Document</a></li>
-                <li><a href="lesson03/chamber-site-plan.html">03: Site Plan | Chamber</a></li>
-                <li><a href="chamber/">04: Chamber Home </a></li>
-                <li><a href="lesson05/bom.html">05 Assignment: DOM Manipulation - Favorite Chapters Application</a></li>
-                <li><a href="#">05: Flexbox | Chamber</a></li>
-                <li><a href="#">06: CSS Variables | Chamber</a></li>
-                <li><a href="#">07: JavaScript | Chamber</a></li>
-                <li><a href="#">08: JavaScript | Chamber</a></li>
-                <li><a href="#">09: JavaScript | Chamber</a></li>
-                <li><a href="#">10: JavaScript | Chamber</a></li>
-                <!-- Add more activities as needed -->
-            </ul>
         </section>
-
-        <section class="card information">
-            <h3>Information</h3>
-            <p id="pageVisitsCount"></p>
-            <script src="scripts/getdates.js" defer></script>
+        <section class="content-section location-section" aria-labelledby="location-title">
+            <h2 id="location-title">Student Location</h2>
+            <p class="location-name">Bucharest, Romania</p>
+            <p>I study online with BYU-Idaho while living in Bucharest, Romania.</p>
+        </section>
+        <section class="content-section certificate-section" aria-labelledby="certificate-title">
+            <h2 id="certificate-title">Web and Computer Programming Certificate</h2>
+            <div class="course-controls" role="group" aria-label="Filter certificate courses">
+                <button type="button" class="filter-button" data-filter="all" aria-pressed="true">All Courses</button>
+                <button type="button" class="filter-button" data-filter="WDD" aria-pressed="false">WDD Courses</button>
+                <button type="button" class="filter-button" data-filter="CSE" aria-pressed="false">CSE Courses</button>
+            </div>
+            <p class="credit-summary">Displayed credits: <output id="credit-total" aria-live="polite">0</output></p>
+            <ul class="course-grid" id="course-list" aria-live="polite"></ul>
+            <p class="empty-message" id="course-empty" hidden>No courses match this filter.</p>
         </section>
     </main>
 
-    <section class="map-container">
-        <h3>Google Maps</h3>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.965157183445!2d29.011066615289555!3d41.042769726743345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac4a3cc4410ef%3A0x60eefa6bf5d0bf25!2sBe%C5%9Fikta%C5%9F%2C%20%C4%B0stanbul%2C%20Turkey!5e0!3m2!1sen!2str!4v1645458747230" allowfullscreen="" loading="lazy" title="Google Maps - Istanbul, Turkey"></iframe>
-    </section>
-    
-    
-
-    <footer>
-        <p>©<span id="currentyear"></span> Semih Aydin Turkey <span id="lastModified"></span></p>
-        <script src="scripts/pagevisits.js" defer></script>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <nav class="social-links" aria-label="Social profiles">
+                <a href="https://github.com/semhaydn/wdd231" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.08c-3.1.68-3.75-1.32-3.75-1.32-.5-1.3-1.24-1.65-1.24-1.65-1.01-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1 1.7 2.62 1.2 3.26.92.1-.72.4-1.2.71-1.48-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.95 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.53.23 2.67.11 2.95.72.78 1.15 1.77 1.15 2.99 0 4.29-2.61 5.23-5.1 5.5.4.35.76 1.02.76 2.06v3.11c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/" aria-label="LinkedIn profile (replace with your profile URL)" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.9H4.96V9.34h2.97v9.56ZM6.45 8.03a1.72 1.72 0 1 1 .02-3.44 1.72 1.72 0 0 1-.02 3.44Zm12.49 10.87h-2.97v-4.65c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.66V9.34h2.85v1.31h.04c.4-.75 1.37-1.55 2.82-1.55 3.01 0 3.57 1.98 3.57 4.56v5.24Z" /></svg>
+                </a>
+            </nav>
+            <p class="copyright">&copy; <span id="currentyear"></span> Semih Aydin · Romania</p>
+            <p class="modified-date">Last modified: <span id="lastModified"></span></p>
+        </div>
     </footer>
-    
-    <script src="scripts/menu.js" defer></script>
-    <script src="scripts/links.js" defer></script>
 </body>
-
 </html>
