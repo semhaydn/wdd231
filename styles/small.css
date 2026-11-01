@@ -30,8 +30,9 @@
 }
 
 .course-home :focus-visible {
-    outline: 3px solid #f0bf55;
+    outline: 3px solid var(--navy);
     outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--paper);
 }
 
 .course-home .site-header {
