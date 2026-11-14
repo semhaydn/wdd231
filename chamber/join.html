@@ -8,15 +8,20 @@
     <title>Join | Istanbul Chamber of Commerce</title>
     <link rel="icon" href="images/favicon.ico">
     <meta property="og:title" content="Join | Istanbul Chamber of Commerce">
+    <meta property="og:description" content="Apply to join the Istanbul Chamber of Commerce and build connections with the city's business community.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://semhaydn.github.io/wdd231/chamber/images/istanbul-chamber.jpg">
     <meta property="og:url" content="https://semhaydn.github.io/wdd231/chamber/join.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/medium.css" media="(min-width: 768px)">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
     <link rel="stylesheet" href="styles/dark-mode.css">
     <script src="scripts/site.js" defer></script>
+    <script src="scripts/join.js" defer></script>
 </head>
 <body>
     <header>
@@ -24,7 +29,7 @@
             <img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100">
         </div>
         <div class="header-content">
-            <h1>Istanbul Chamber of Commerce</h1>
+            <p class="site-title">Istanbul Chamber of Commerce</p>
             <nav id="primary-navigation" aria-label="Primary navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -45,7 +50,7 @@
     <main>
         <div class="container">
             <form action="thankyou.html" method="get">
-                <h2>Membership Application</h2>
+                <h1>Membership Application</h1>
                 <fieldset>
                     <legend>Personal Information</legend>
                     <label for="firstName">First Name:</label>
@@ -90,9 +95,6 @@
             </aside>
         </div>
     </main>
-    <script>
-        document.querySelector('#timestamp').value = new Date().toISOString();
-    </script>
     <footer>
         <p>Contact: <a href="mailto:ayd23002@byui.edu">ayd23002@byui.edu</a></p>
         <p>© <span id="currentyear"></span> Istanbul Chamber of Commerce | Semih Aydin</p>
