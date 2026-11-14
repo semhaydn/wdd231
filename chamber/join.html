@@ -3,52 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join Istanbul Chamber of Commerce - Connecting Businesses, Empowering Growth">
+    <meta name="description" content="Apply for membership in the Istanbul Chamber of Commerce and connect with the city's business community.">
     <meta name="author" content="Semih Aydin">
-    <title>Join Istanbul Chamber of Commerce</title>
-    <!-- Favicon -->
+    <title>Join | Istanbul Chamber of Commerce</title>
     <link rel="icon" href="images/favicon.ico">
-    <!-- Social Media Meta Settings -->
-    <meta property="og:title" content="Istanbul Chamber of Commerce">
+    <meta property="og:title" content="Join | Istanbul Chamber of Commerce">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://semhaydn.github.io/wdd230/chamber/images/istanbul-chamber.jpg">
-    <meta property="og:url" content="https://semhaydn.github.io/wdd230/chamber/">
-    <!-- Stylesheets -->
+    <meta property="og:image" content="https://semhaydn.github.io/wdd231/chamber/images/istanbul-chamber.jpg">
+    <meta property="og:url" content="https://semhaydn.github.io/wdd231/chamber/join.html">
+    <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/medium.css" media="(min-width: 768px)">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/dark-mode.css" id="dark-mode-stylesheet">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <script src="scripts/site.js" defer></script>
 </head>
 <body>
-
     <header>
         <div class="logo">
-            <img src="images/logo-new.png" alt="Chamber Logo" height="100">
+            <img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100">
         </div>
-        
         <div class="header-content">
             <h1>Istanbul Chamber of Commerce</h1>
-
-            <nav>
+            <nav id="primary-navigation" aria-label="Primary navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="discover.html">Discover</a></li>
                     <li><a href="directory.html">Directory</a></li>
-                    <li><a href="join.html">Join</a></li>
-                    <!-- Add more placeholder navigation items as needed -->
+                    <li><a href="join.html" aria-current="page">Join</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="dark-mode-toggle">
-            <input type="checkbox" id="dark-mode-switch">
-            <label for="dark-mode-switch"></label>
+        <div class="header-controls">
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="dark-mode-switch">
+                <label for="dark-mode-switch"><span class="visually-hidden">Toggle dark mode</span></label>
+            </div>
+            <button id="menu-toggle" class="menu-icon" type="button" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false"></button>
         </div>
-        
-        
-        <button id="menu-toggle" class="menu-icon">&#9776;</button>
-    </header>  
-
+    </header>
     <main>
         <div class="container">
             <form action="thankyou.html" method="get">
@@ -56,26 +49,26 @@
                 <fieldset>
                     <legend>Personal Information</legend>
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
-    
+                    <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
-    
+                    <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+
                     <label for="title">Title/Position:</label>
-                    <input type="text" id="title" name="title" required pattern="[a-zA-Z -]{7,}">
-    
+                    <input type="text" id="title" name="title" required pattern="[a-zA-Z -]{7,}" title="Enter at least seven letters, spaces, or hyphens.">
+
                     <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required placeholder="example@domain.com">
-    
+                    <input type="email" id="email" name="email" autocomplete="email" required placeholder="example@domain.com">
+
                     <label for="phone">Mobile Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" required>
                 </fieldset>
-    
+
                 <fieldset>
                     <legend>Organization Information</legend>
                     <label for="organization">Business/Organization Name:</label>
-                    <input type="text" id="organization" name="organization" required>
-    
+                    <input type="text" id="organization" name="organization" autocomplete="organization" required>
+
                     <label for="membershipLevel">Membership Level:</label>
                     <select id="membershipLevel" name="membershipLevel">
                         <option value="NP">Non-Profit Membership (Free)</option>
@@ -83,56 +76,27 @@
                         <option value="Silver">Silver Membership</option>
                         <option value="Gold">Gold Membership</option>
                     </select>
-    
+
                     <label for="description">Organization Description:</label>
                     <textarea id="description" name="description"></textarea>
                 </fieldset>
-    
+
                 <input type="hidden" id="timestamp" name="timestamp">
-    
                 <button type="submit">Submit Application</button>
             </form>
-    
             <aside>
-                <h3>Membership Benefits</h3>
-                <!-- Display membership benefits here -->
+                <h2>Membership Benefits</h2>
+                <p>Members can build business connections, increase visibility, and participate in Chamber events.</p>
             </aside>
         </div>
-    
-        <script>
-            document.getElementById("timestamp").value = Date.now();
-        </script>
     </main>
-
-<!-- Include the windchill.js script at the end of your body -->
-<script src="scripts/windchill.js" defer></script>
     <script>
-        const darkModeToggle = document.getElementById('dark-mode-switch');
-        const menuToggle = document.querySelector('.menu-icon');
-        const nav = document.querySelector('nav');
-        const body = document.body;
-    
-        darkModeToggle.addEventListener('change', () => {
-            body.classList.toggle('dark-mode', darkModeToggle.checked);
-        });
-    
-        menuToggle.addEventListener('click', () => {
-            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
-        });
+        document.querySelector('#timestamp').value = new Date().toISOString();
     </script>
-    
     <footer>
-        <!-- Contact Information -->
-        <p>Contact: ayd23002@byui.edu </p>
-        <!-- Development Information -->
-        <p>Project for WDD 230 - Last Modified: <span id="lastModified"></span></p>
-
-        <!-- JavaScript for Last Modified Date -->
-        <script>
-            const lastModifiedElement = document.getElementById('lastModified');
-            const lastModified = new Date(document.lastModified);
-            lastModifiedElement.textContent = lastModified.toLocaleString();
-        </script>
+        <p>Contact: <a href="mailto:ayd23002@byui.edu">ayd23002@byui.edu</a></p>
+        <p>© <span id="currentyear"></span> Istanbul Chamber of Commerce | Semih Aydin</p>
+        <p>Project for WDD 231 - Last Modified: <span id="lastModified"></span></p>
     </footer>
 </body>
 </html>

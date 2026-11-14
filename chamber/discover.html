@@ -3,144 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Istanbul Chamber of Commerce - Connecting Businesses, Empowering Growth">
+    <meta name="description" content="Discover Istanbul's community, landmarks, and opportunities with the Istanbul Chamber of Commerce.">
     <meta name="author" content="Semih Aydin">
-    <title>Discover Istanbul Chamber of Commerce</title>
-    <!-- Favicon -->
+    <title>Discover Istanbul | Istanbul Chamber of Commerce</title>
     <link rel="icon" href="images/favicon.ico">
-    <!-- Social Media Meta Settings -->
-    <meta property="og:title" content="Istanbul Chamber of Commerce">
+    <meta property="og:title" content="Discover Istanbul | Istanbul Chamber of Commerce">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://semhaydn.github.io/wdd230/chamber/images/istanbul-chamber.jpg">
-    <meta property="og:url" content="https://semhaydn.github.io/wdd230/chamber/">
-    <!-- Stylesheets -->
+    <meta property="og:image" content="https://semhaydn.github.io/wdd231/chamber/images/istanbul-chamber.jpg">
+    <meta property="og:url" content="https://semhaydn.github.io/wdd231/chamber/discover.html">
+    <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/medium.css" media="(min-width: 768px)">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/dark-mode.css" id="dark-mode-stylesheet">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <script src="scripts/site.js" defer></script>
+    <script src="scripts/discover.js" defer></script>
 </head>
 <body>
-
     <header>
         <div class="logo">
-            <img src="images/logo-new.png" alt="Chamber Logo" height="100">
+            <img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100">
         </div>
-        
         <div class="header-content">
             <h1>Istanbul Chamber of Commerce</h1>
-
-            <nav>
+            <nav id="primary-navigation" aria-label="Primary navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="discover.html" aria-current="page">Discover</a></li>
                     <li><a href="directory.html">Directory</a></li>
                     <li><a href="join.html">Join</a></li>
-                    <!-- Add more placeholder navigation items as needed -->
                 </ul>
             </nav>
         </div>
-        <div class="dark-mode-toggle">
-            <input type="checkbox" id="dark-mode-switch">
-            <label for="dark-mode-switch"></label>
+        <div class="header-controls">
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="dark-mode-switch">
+                <label for="dark-mode-switch"><span class="visually-hidden">Toggle dark mode</span></label>
+            </div>
+            <button id="menu-toggle" class="menu-icon" type="button" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false"></button>
         </div>
-        
-        
-        <button id="menu-toggle" class="menu-icon">&#9776;</button>
-    </header>    
+    </header>
     <main>
-            <!-- Sidebar Layout -->
-    <section class="sidebar">
-        <!-- Content for the sidebar goes here -->
-        <h2>Sidebar Content</h2>
-        <p id="visitMessage"></p>
-    </section>
-
-    <!-- Main Content Area -->
-    <section class="main-content">
-        <!-- Local Photos of Interest -->
-        <section class="card">
-            <h3>  Discover  Istanbul </h3>
+        <section class="sidebar" aria-labelledby="discover-title">
+            <h2 id="discover-title">Discover Istanbul</h2>
+            <p id="visitMessage"></p>
+        </section>
+        <section class="main-content" aria-labelledby="gallery-title">
+            <h2 id="gallery-title">Places and experiences around Istanbul</h2>
             <div class="image-gallery">
-                <!-- Lazy-loaded images go here -->
-            <img src="images/discover-image.webp" alt="Local Photo 1" loading="lazy">
-            <img src="images/discover-image2.webp" alt="Local Photo 2" loading="lazy">
-            <img src="images/discover-image3.webp" alt="Local Photo 3" loading="lazy">
-            <img src="images/discover-image4.webp" alt="Local Photo 4" loading="lazy">
-            <img src="images/discover-image5.webp" alt="Local Photo 5" loading="lazy">
-            <img src="images/discover-image6.webp" alt="Local Photo 6" loading="lazy">
-                <!-- Add more images as needed -->
+                <img src="images/discover-image.webp" alt="A view of Istanbul" width="1600" height="1043" loading="lazy">
+                <img src="images/discover-image2.webp" alt="A view of Istanbul" width="1600" height="1067" loading="lazy">
+                <img src="images/discover-image3.webp" alt="A view of Istanbul" width="900" height="1600" loading="lazy">
+                <img src="images/discover-image4.webp" alt="A view of Istanbul" width="1067" height="1600" loading="lazy">
+                <img src="images/discover-image5.webp" alt="A view of Istanbul" width="1067" height="1600" loading="lazy">
+                <img src="images/discover-image6.webp" alt="A view of Istanbul" width="1600" height="1067" loading="lazy">
             </div>
         </section>
-    </section>
-    <section class="card sidebar">
-        <h3>Discover</h3>
-        <!-- Add content related to demographics, statistics, events, etc. -->
-        <p>Explore the vibrant features of our community!</p>
-        <!-- Add JavaScript logic for localStorage and message display -->
-        <script src="scripts/discover.js" defer></script>
-      </section>
-
     </main>
-    <script>
-        // Lazy Load Images
-        const imagesToLoad = document.querySelectorAll('img[data-src]');
-
-        const imgOptions = {
-            threshold: 1,
-            rootMargin: "0px 0px 50px 0px"
-        };
-
-        const imgObserver = new IntersectionObserver((entries, imgObserver) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    preloadImage(entry.target);
-                    imgObserver.unobserve(entry.target);
-                }
-            });
-        }, imgOptions);
-
-        imagesToLoad.forEach(image => {
-            imgObserver.observe(image);
-        });
-
-        function preloadImage(img) {
-            const src = img.getAttribute("data-src");
-            if (!src) {
-                return;
-            }
-            img.src = src;
-        }
-    </script>
-    <script>
-        const darkModeToggle = document.getElementById('dark-mode-switch');
-        const menuToggle = document.querySelector('.menu-icon');
-        const nav = document.querySelector('nav');
-        const body = document.body;
-    
-        darkModeToggle.addEventListener('change', () => {
-            body.classList.toggle('dark-mode', darkModeToggle.checked);
-        });
-    
-        menuToggle.addEventListener('click', () => {
-            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
-        });
-    </script>
-    
     <footer>
-        <!-- Contact Information -->
-        <p>Contact: ayd23002@byui.edu </p>
-        <!-- Development Information -->
-        <p>Project for WDD 230 - Last Modified: <span id="lastModified"></span></p>
-
-        <!-- JavaScript for Last Modified Date -->
-        <script>
-            const lastModifiedElement = document.getElementById('lastModified');
-            const lastModified = new Date(document.lastModified);
-            lastModifiedElement.textContent = lastModified.toLocaleString();
-        </script>
+        <p>Contact: <a href="mailto:ayd23002@byui.edu">ayd23002@byui.edu</a></p>
+        <p>© <span id="currentyear"></span> Istanbul Chamber of Commerce | Semih Aydin</p>
+        <p>Project for WDD 231 - Last Modified: <span id="lastModified"></span></p>
     </footer>
 </body>
 </html>

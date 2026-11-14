@@ -7,15 +7,98 @@ const weatherCurrent = document.querySelector('#weather-current');
 const weatherForecast = document.querySelector('#weather-forecast');
 const spotlightContainer = document.querySelector('#spotlight-container');
 
-const formatDescription = (description) =>
+const formatDescription = (description = 'Conditions unavailable') =>
     description.replace(/\b\w/g, (letter) => letter.toUpperCase());
 
-const formatDate = (date) =>
+const localDateKey = (timestamp, timezoneOffset) =>
+    new Date((timestamp + timezoneOffset) * 1000).toISOString().slice(0, 10);
+
+const formatDate = (dateKey) =>
     new Intl.DateTimeFormat('en-US', {
-        weekday: 'short',
+        weekday: 'long',
         month: 'short',
-        day: 'numeric'
-    }).format(date);
+        day: 'numeric',
+        timeZone: 'UTC'
+    }).format(new Date(`${dateKey}T00:00:00Z`));
+
+function createTextElement(tagName, className, text) {
+    const element = document.createElement(tagName);
+    if (className) {
+        element.className = className;
+    }
+    element.textContent = text;
+    return element;
+}
+
+function isHttpUrl(value) {
+    if (typeof value !== 'string' || !URL.canParse(value)) {
+        return false;
+    }
+
+    return ['https:', 'http:'].includes(new URL(value).protocol);
+}
+
+function renderForecast(forecastData, currentData) {
+    const timezoneOffset = forecastData.city.timezone;
+    const today = localDateKey(currentData.dt, timezoneOffset);
+    const dailyForecasts = new Map();
+
+    forecastData.list.forEach((item) => {
+        if (!Number.isFinite(item.dt) || !Number.isFinite(item.main?.temp_min) ||
+            !Number.isFinite(item.main?.temp_max) || !item.weather?.[0]?.description) {
+            return;
+        }
+
+        const dateKey = localDateKey(item.dt, timezoneOffset);
+        if (dateKey <= today) {
+            return;
+        }
+
+        const localHour = new Date((item.dt + timezoneOffset) * 1000).getUTCHours();
+        const noonDistance = Math.abs(localHour - 12);
+        const day = dailyForecasts.get(dateKey) ?? {
+            low: item.main.temp_min,
+            high: item.main.temp_max,
+            description: item.weather[0].description,
+            representativeDistance: noonDistance
+        };
+
+        day.low = Math.min(day.low, item.main.temp_min);
+        day.high = Math.max(day.high, item.main.temp_max);
+        if (noonDistance < day.representativeDistance) {
+            day.description = item.weather[0].description;
+            day.representativeDistance = noonDistance;
+        }
+        dailyForecasts.set(dateKey, day);
+    });
+
+    const days = [...dailyForecasts.entries()]
+        .sort(([firstDate], [secondDate]) => firstDate.localeCompare(secondDate))
+        .slice(0, 3);
+
+    weatherForecast.replaceChildren();
+    if (days.length !== 3) {
+        weatherForecast.append(
+            createTextElement('p', '', 'Three-day forecast is temporarily unavailable.')
+        );
+        return;
+    }
+
+    days.forEach(([dateKey, day]) => {
+        const card = document.createElement('article');
+        card.className = 'forecast-card';
+        card.append(
+            createTextElement('h3', '', formatDate(dateKey)),
+            createTextElement(
+                'p',
+                'forecast-temperature',
+                `Low ${Math.round(day.low)}°C · High ${Math.round(day.high)}°C`
+            ),
+            createTextElement('p', '', formatDescription(day.description))
+        );
+        weatherForecast.append(card);
+    });
+}
 
 async function getWeather() {
     const currentUrl =
@@ -38,81 +121,128 @@ async function getWeather() {
             forecastResponse.json()
         ]);
 
-        const events = [...new Set(
-            forecastData.list
-                .slice(0, 8)
-                .map((item) => formatDescription(item.weather[0].description))
-        )];
+        if (!Number.isFinite(currentData.main?.temp) ||
+            !Number.isFinite(currentData.main?.feels_like) ||
+            !currentData.weather?.[0]?.description ||
+            !Number.isFinite(currentData.dt) ||
+            !Number.isFinite(forecastData.city?.timezone) ||
+            !Array.isArray(forecastData.list)) {
+            throw new Error('The weather service returned incomplete data.');
+        }
 
-        weatherCurrent.innerHTML = `
-            <div class="current-weather">
-                <span class="weather-temp">${Math.round(currentData.main.temp)}°C</span>
-                <div>
-                    <p class="weather-description">${formatDescription(currentData.weather[0].description)}</p>
-                    <p>Feels like ${Math.round(currentData.main.feels_like)}°C</p>
-                </div>
-            </div>
-            <p class="weather-events"><strong>Conditions:</strong> ${events.join(', ')}</p>
-        `;
-
-        const days = new Map();
-
-        forecastData.list.forEach((item) => {
-            const date = new Date(item.dt * 1000);
-            const key = date.toISOString().slice(0, 10);
-
-            if (!days.has(key) && key !== new Date().toISOString().slice(0, 10)) {
-                days.set(key, item);
-            }
-        });
-
-        weatherForecast.innerHTML = [...days.values()].slice(0, 3).map((item) => `
-            <article class="forecast-card">
-                <h3>${formatDate(new Date(item.dt * 1000))}</h3>
-                <p>${Math.round(item.main.temp)}°C</p>
-                <p>${formatDescription(item.weather[0].description)}</p>
-            </article>
-        `).join('');
+        const current = document.createElement('div');
+        current.className = 'current-weather';
+        current.append(
+            createTextElement('span', 'weather-temp', `${Math.round(currentData.main.temp)}°C`)
+        );
+        const details = document.createElement('div');
+        details.append(
+            createTextElement('p', 'weather-description', formatDescription(currentData.weather[0].description)),
+            createTextElement('p', '', `Feels like ${Math.round(currentData.main.feels_like)}°C`)
+        );
+        current.append(details);
+        weatherCurrent.replaceChildren(current);
+        renderForecast(forecastData, currentData);
     } catch (error) {
-        weatherCurrent.innerHTML = '<p>Weather information is temporarily unavailable.</p>';
-        weatherForecast.innerHTML = '';
+        weatherCurrent.replaceChildren(
+            createTextElement('p', '', 'Weather information is temporarily unavailable.')
+        );
+        weatherForecast.replaceChildren();
         console.error(error);
     }
 }
 
 function shuffle(items) {
-    return [...items].sort(() => Math.random() - 0.5);
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+    return shuffled;
+}
+
+function createSpotlight(member) {
+    const card = document.createElement('article');
+    card.className = 'spotlight-card';
+
+    const logo = document.createElement('img');
+    logo.src = member.logo;
+    logo.alt = `${member.name} logo`;
+    logo.width = 120;
+    logo.height = 80;
+    logo.loading = 'lazy';
+    card.append(logo);
+
+    const details = document.createElement('div');
+    details.append(
+        createTextElement('h3', '', member.name),
+        createTextElement('p', 'membership', `${member.membershipLevel} Member`),
+        createTextElement('p', '', member.address)
+    );
+
+    if (member.logoCredit &&
+        typeof member.logoAttribution === 'string' &&
+        URL.canParse(member.logoAttribution)) {
+        const attribution = new URL(member.logoAttribution);
+        if (attribution.protocol === 'https:') {
+            const credit = document.createElement('a');
+            credit.className = 'logo-credit';
+            credit.href = attribution.href;
+            credit.rel = 'noopener noreferrer';
+            credit.textContent = member.logoCredit;
+            details.append(credit);
+        }
+    }
+
+    const phone = document.createElement('a');
+    phone.href = `tel:${member.phone.replace(/[^\d+]/g, '')}`;
+    phone.textContent = member.phone;
+    details.append(phone);
+
+    if (isHttpUrl(member.website)) {
+        const websiteUrl = new URL(member.website);
+        const website = document.createElement('a');
+        website.href = websiteUrl.href;
+        website.target = '_blank';
+        website.rel = 'noopener noreferrer';
+        website.textContent = 'Visit website';
+        details.append(website);
+    }
+
+    card.append(details);
+    return card;
 }
 
 async function loadSpotlights() {
     try {
         const response = await fetch('data/members.json');
-
         if (!response.ok) {
             throw new Error('Unable to load member data.');
         }
 
         const data = await response.json();
-        const eligibleMembers = data.members.filter(
-            (member) => ['Gold', 'Silver'].includes(member.membershipLevel)
+        if (!Array.isArray(data.members)) {
+            throw new Error('Member data is not in the expected format.');
+        }
+
+        const eligibleMembers = data.members.filter((member) =>
+            member && typeof member === 'object' &&
+            ['Gold', 'Silver'].includes(member.membershipLevel) &&
+            ['name', 'address', 'phone', 'logo', 'website'].every(
+                (field) => typeof member[field] === 'string' && member[field].trim()
+            ) &&
+            isHttpUrl(member.logo) && isHttpUrl(member.website)
         );
-
         const selectedMembers = shuffle(eligibleMembers).slice(0, 3);
+        if (selectedMembers.length < 2) {
+            throw new Error('At least two complete Gold or Silver members are required.');
+        }
 
-        spotlightContainer.innerHTML = selectedMembers.map((member) => `
-            <article class="spotlight-card">
-                <img src="${member.logo}" alt="${member.name} logo" width="120" height="80" loading="lazy">
-                <div>
-                    <h3>${member.name}</h3>
-                    <p class="membership">${member.membershipLevel} Member</p>
-                    <p>${member.address}</p>
-                    <p>${member.phone}</p>
-                    <a href="${member.website}" target="_blank" rel="noopener noreferrer">Visit Website</a>
-                </div>
-            </article>
-        `).join('');
+        spotlightContainer.replaceChildren(...selectedMembers.map(createSpotlight));
     } catch (error) {
-        spotlightContainer.innerHTML = '<p>Business spotlights are temporarily unavailable.</p>';
+        spotlightContainer.replaceChildren(
+            createTextElement('p', '', 'Business spotlights are temporarily unavailable.')
+        );
         console.error(error);
     }
 }
