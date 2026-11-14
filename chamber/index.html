@@ -1,132 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Istanbul Chamber of Commerce - Connecting Businesses, Empowering Growth">
-    <meta name="author" content="Semih Aydin">
-    <title>Istanbul Chamber of Commerce</title>
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico">
-    <!-- Social Media Meta Settings -->
-    <meta property="og:title" content="Istanbul Chamber of Commerce">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://semhaydn.github.io/wdd230/chamber/images/istanbul-chamber.jpg">
-    <meta property="og:url" content="https://semhaydn.github.io/wdd230/chamber/">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/medium.css" media="(min-width: 768px)">
-    <link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/dark-mode.css" id="dark-mode-stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Istanbul Chamber of Commerce - Connecting businesses, supporting growth, and strengthening Istanbul's business community.">
+<meta name="author" content="Semih Aydin">
+<title>Istanbul Chamber of Commerce | Home</title>
+<link rel="icon" href="images/favicon.ico">
+<meta property="og:title" content="Istanbul Chamber of Commerce">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://semhaydn.github.io/wdd231/chamber/images/hero-image.webp">
+<meta property="og:url" content="https://semhaydn.github.io/wdd231/chamber/">
+<link rel="stylesheet" href="styles/normalize.css">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/medium.css" media="(min-width: 768px)">
+<link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
+<link rel="stylesheet" href="styles/dark-mode.css">
+<link rel="stylesheet" href="styles/home.css">
+<script src="scripts/site.js" defer></script>
+<script src="scripts/home.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <img src="images/logo-new.png" alt="Chamber Logo" height="100">
-        </div>
-        
-        <div class="header-content">
-            <h1>Istanbul Chamber of Commerce</h1>
-
-            <nav>
-                <ul>
-                    <li><a href="chamber/index.html">Home</a></li>
-                    <li><a href="chamber/discover.html">Discover</a></li>
-                    <li><a href="chamber/directory.html">Directory</a></li>
-                    <li><a href="chamber/join.html">Join</a></li>
-                    <!-- Add more placeholder navigation items as needed -->
-                </ul>
-            </nav>
-        </div>
-        <div class="dark-mode-toggle">
-            <input type="checkbox" id="dark-mode-switch">
-            <label for="dark-mode-switch"></label>
-        </div>
-        
-        
-        <button id="menu-toggle" class="menu-icon">&#9776;</button>
-    </header>    <main>
-        <section class="hero">
-            <h2>Istanbul</h2>
-            <!-- Use the picture element to provide different versions of the optimized image for small, medium, and large views -->
-            <picture>
-                <!-- Small View (max-width: 400px) -->
-                <source media="(max-width: 400px)" srcset="images/image-small.webp">
-                
-                <!-- Medium View (min-width: 401px and max-width: 960px) -->
-                <source media="(min-width: 401px) and (max-width: 960px)" srcset="images/image-medium.webp">
-                
-                <!-- Large View (min-width: 961px) -->
-                <source media="(min-width: 961px)" srcset="images/image-large.webp">
-                
-                <!-- Fallback for browsers that do not support the picture element -->
-                <img src="images/hero-image.webp" alt="Istanbul Cityscape">
-            </picture>
-        </section>
-        
-
-        <!-- Call to Action -->
-        <section class="cta">
-            <h2>Join the Istanbul Chamber of Commerce</h2>
-            <p>Experience the benefits of membership and grow your business with us.</p>
-            <a href="#join" class="join-link">Join Now</a>
-        </section>
-
-        <!-- Current Events -->
-        <section class="current-events">
-            <h2>Current Events</h2>
-            <p>Stay updated on the latest business events happening in Istanbul.</p>
-            <!-- Placeholder content -->
-        </section>
-
-        <!-- Weather Card -->
-        <section class="weather">
-            <h2>Weather Update</h2>
-            <p>Temperature: <span id="temperature">70</span> °F</p>
-            <p>Wind Speed: <span id="windspeed">5.0</span> mph</p>
-            <p>Wind Chill: <span id="windchill"></span></p>
-            <!-- Placeholder content -->
-        </section>
-
-        <!-- Company Spotlights -->
-        <section class="spotlights">
-            <h2>Business Spotlights</h2>
-            <p>Discover featured businesses contributing to Istanbul's success.</p>
-            <!-- Placeholder content -->
-        </section>
-    </main>
-
-<!-- Include the windchill.js script at the end of your body -->
-<script src="scripts/windchill.js" defer></script>
-    <script>
-        const darkModeToggle = document.getElementById('dark-mode-switch');
-        const menuToggle = document.querySelector('.menu-icon');
-        const nav = document.querySelector('nav');
-        const body = document.body;
-    
-        darkModeToggle.addEventListener('change', () => {
-            body.classList.toggle('dark-mode', darkModeToggle.checked);
-        });
-    
-        menuToggle.addEventListener('click', () => {
-            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
-        });
-    </script>
-    
-    <footer>
-        <!-- Contact Information -->
-        <p>Contact: ayd23002@byui.edu </p>
-        <!-- Development Information -->
-        <p>Project for WDD 230 - Last Modified: <span id="lastModified"></span></p>
-
-        <!-- JavaScript for Last Modified Date -->
-        <script>
-            const lastModifiedElement = document.getElementById('lastModified');
-            const lastModified = new Date(document.lastModified);
-            lastModifiedElement.textContent = lastModified.toLocaleString();
-        </script>
-    </footer>
+<header>
+<div class="logo"><img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100"></div>
+<div class="header-content">
+<h1>Istanbul Chamber of Commerce</h1>
+<nav aria-label="Primary navigation">
+<ul>
+<li><a href="index.html" aria-current="page">Home</a></li>
+<li><a href="discover.html">Discover</a></li>
+<li><a href="directory.html">Directory</a></li>
+<li><a href="join.html">Join</a></li>
+</ul>
+</nav>
+</div>
+<div class="dark-mode-toggle">
+<input type="checkbox" id="dark-mode-switch">
+<label for="dark-mode-switch"><span class="visually-hidden">Toggle dark mode</span></label>
+</div>
+<button id="menu-toggle" class="menu-icon" aria-label="Toggle navigation" aria-expanded="false"></button>
+</header>
+<main class="home-main">
+<section class="hero" aria-labelledby="hero-title">
+<picture>
+<source media="(max-width: 400px)" srcset="images/image-small.webp">
+<source media="(max-width: 960px)" srcset="images/image-medium.webp">
+<img src="images/image-large.webp" alt="Istanbul city skyline and waterfront" width="1600" height="600">
+</picture>
+<div class="hero-content">
+<h2 id="hero-title">Connect. Grow. Prosper.</h2>
+<p>Build stronger business connections across Istanbul.</p>
+<a class="join-link" href="join.html">Join the Chamber</a>
+</div>
+</section>
+<div class="home-grid">
+<section class="home-card events-card" aria-labelledby="events-title">
+<h2 id="events-title">Current Events</h2>
+<div class="home-card-content">
+<ul class="event-list">
+<li><strong>Istanbul Business Networking</strong> — Meet local entrepreneurs and business leaders.</li>
+<li><strong>Member Growth Workshop</strong> — Practical strategies for improving business visibility.</li>
+<li><strong>Chamber Community Meetup</strong> — Connect with fellow members and discover new opportunities.</li>
+</ul>
+</div>
+</section>
+<section class="home-card" aria-labelledby="weather-title">
+<h2 id="weather-title">Istanbul Weather</h2>
+<div class="home-card-content">
+<div id="weather-current"><p>Loading current weather...</p></div>
+<div id="weather-forecast" aria-live="polite"><p>Loading three-day forecast...</p></div>
+</div>
+</section>
+<section class="home-card spotlights-section" aria-labelledby="spotlight-title">
+<h2 id="spotlight-title">Business Spotlights</h2>
+<div id="spotlight-container" aria-live="polite"><p>Loading featured members...</p></div>
+</section>
+</div>
+</main>
+<footer>
+<p>Contact: ayd23002@byui.edu</p>
+<p>© <span id="currentyear"></span> Istanbul Chamber of Commerce | Semih Aydin</p>
+<p>Project for WDD 231 - Last Modified: <span id="lastModified"></span></p>
+</footer>
 </body>
 </html>
