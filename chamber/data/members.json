@@ -5,17 +5,15 @@
       "address": "Aydınevler Mah. İnönü Cd. No:20, Istanbul",
       "phone": "+90 212 313 10 00",
       "website": "https://www.turkcell.com.tr",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Turkcell_yeni_4f007f5f.gif",
-      "membershipLevel": "Gold",
-      "logoAttribution": "https://commons.wikimedia.org/wiki/File:Turkcell_yeni_4f007f5f.gif",
-      "logoCredit": "Logo by Batuazizoglu (CC BY-SA 4.0)"
+      "logo": "images/members/turkcell.svg",
+      "membershipLevel": "Gold"
     },
     {
       "name": "Arçelik",
       "address": "Karaağaç Cd. No:2-6, Sütlüce, Istanbul",
       "phone": "+90 212 314 34 34",
       "website": "https://www.arcelik.com.tr",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Arcelik.svg",
+      "logo": "images/members/arcelik.svg",
       "membershipLevel": "Gold"
     },
     {
@@ -23,7 +21,7 @@
       "address": "Nakkaştepe Azizbey Sok. No:1, Istanbul",
       "phone": "+90 216 531 00 00",
       "website": "https://www.koc.com.tr",
-      "logo": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/koc.svg",
+      "logo": "images/members/koc.svg",
       "membershipLevel": "Silver"
     },
     {
@@ -31,7 +29,7 @@
       "address": "Atatürk Mah. Turgut Özal Blv. No:7, Istanbul",
       "phone": "+90 216 579 30 00",
       "website": "https://www.migros.com.tr",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/0/07/MiGROS_Logo.svg",
+      "logo": "images/members/migros.svg",
       "membershipLevel": "Silver"
     },
     {
@@ -39,7 +37,7 @@
       "address": "Maslak Mah. Büyükdere Cd. No:237, Istanbul",
       "phone": "+90 212 331 02 00",
       "website": "https://www.trendyol.com",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Trendyol_logo.svg",
+      "logo": "images/members/trendyol.svg",
       "membershipLevel": "Gold"
     }
   ]
