@@ -180,19 +180,7 @@ function createSpotlight(member) {
         createTextElement('p', '', member.address)
     );
 
-    if (member.logoCredit &&
-        typeof member.logoAttribution === 'string' &&
-        URL.canParse(member.logoAttribution)) {
-        const attribution = new URL(member.logoAttribution);
-        if (attribution.protocol === 'https:') {
-            const credit = document.createElement('a');
-            credit.className = 'logo-credit';
-            credit.href = attribution.href;
-            credit.rel = 'noopener noreferrer';
-            credit.textContent = member.logoCredit;
-            details.append(credit);
-        }
-    }
+
 
     const phone = document.createElement('a');
     phone.href = `tel:${member.phone.replace(/[^\d+]/g, '')}`;
@@ -231,7 +219,7 @@ async function loadSpotlights() {
             ['name', 'address', 'phone', 'logo', 'website'].every(
                 (field) => typeof member[field] === 'string' && member[field].trim()
             ) &&
-            isHttpUrl(member.logo) && isHttpUrl(member.website)
+            typeof member.logo === 'string' && member.logo.trim() && isHttpUrl(member.website)
         );
         const selectedMembers = shuffle(eligibleMembers).slice(0, 3);
         if (selectedMembers.length < 2) {
