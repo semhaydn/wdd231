@@ -101,15 +101,10 @@ nav a[aria-current="page"] {
     color: #fff;
     cursor: pointer;
     font-size: 1.5rem;
+    line-height: 1;
+    padding: 0;
 }
 
-.menu-icon::before {
-    content: "\2630";
-}
-
-.menu-icon[aria-expanded="true"]::before {
-    content: "\00d7";
-}
 
 .header-controls {
     display: flex;
