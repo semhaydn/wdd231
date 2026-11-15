@@ -36,8 +36,14 @@ if (menuToggle && nav) {
 }
 
 if (darkModeToggle) {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    darkModeToggle.checked = savedDarkMode;
+    document.body.classList.toggle('dark-mode', savedDarkMode);
+
     darkModeToggle.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+        const isDarkMode = darkModeToggle.checked;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        localStorage.setItem('darkMode', String(isDarkMode));
     });
 }
 
