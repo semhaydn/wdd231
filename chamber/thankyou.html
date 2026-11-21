@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thank you for applying to join the Istanbul Chamber of Commerce.">
     <meta name="author" content="Semih Aydin">
+    <meta name="theme-color" content="#264653">
     <title>Application Received | Istanbul Chamber of Commerce</title>
     <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="Application Received | Istanbul Chamber of Commerce">
-    <meta property="og:description" content="Your Istanbul Chamber of Commerce membership application has been received. Thank you for your interest.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://semhaydn.github.io/wdd231/chamber/images/istanbul-chamber.jpg">
-    <meta property="og:url" content="https://semhaydn.github.io/wdd231/chamber/thankyou.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -21,41 +17,54 @@
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
     <link rel="stylesheet" href="styles/dark-mode.css">
     <script src="scripts/site.js" defer></script>
+    <script src="scripts/thankyou.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100">
+<header>
+    <div class="logo"><img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100"></div>
+    <div class="header-content">
+        <p class="site-title">Istanbul Chamber of Commerce</p>
+        <nav id="primary-navigation" aria-label="Primary navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="join.html" aria-current="page">Join</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header-controls">
+        <div class="dark-mode-toggle">
+            <input type="checkbox" id="dark-mode-switch">
+            <label for="dark-mode-switch"><span class="visually-hidden">Toggle dark mode</span></label>
         </div>
-        <div class="header-content">
-            <p class="site-title">Istanbul Chamber of Commerce</p>
-            <nav id="primary-navigation" aria-label="Primary navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="discover.html">Discover</a></li>
-                    <li><a href="directory.html">Directory</a></li>
-                    <li><a href="join.html">Join</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="header-controls">
-            <div class="dark-mode-toggle">
-                <input type="checkbox" id="dark-mode-switch">
-                <label for="dark-mode-switch"><span class="visually-hidden">Toggle dark mode</span></label>
-            </div>
-            <button id="menu-toggle" class="menu-icon" type="button" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false"></button>
-        </div>
-    </header>
-    <main>
-        <section class="thank-you" aria-labelledby="thank-you-title">
-            <h1 id="thank-you-title">Thank you for your application!</h1>
-            <p>We appreciate your interest in joining the Istanbul Chamber of Commerce.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Contact: <a href="mailto:ayd23002@byui.edu">ayd23002@byui.edu</a></p>
-        <p>© <span id="currentyear"></span> Istanbul Chamber of Commerce | Semih Aydin</p>
-        <p>Project for WDD 231 - Last Modified: <span id="lastModified"></span></p>
-    </footer>
+        <button id="menu-toggle" class="menu-icon" type="button" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">☰</button>
+    </div>
+</header>
+
+<main class="thank-you-main">
+    <section class="join-intro" aria-labelledby="thank-you-title">
+        <h1 id="thank-you-title">Thank you for your application!</h1>
+        <p>Your membership application details are shown below. The Istanbul Chamber of Commerce appreciates your interest.</p>
+    </section>
+    <section class="application-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">Application Summary</h2>
+        <dl>
+            <dt>First name</dt><dd id="summary-first-name">Not provided</dd>
+            <dt>Last name</dt><dd id="summary-last-name">Not provided</dd>
+            <dt>Email address</dt><dd id="summary-email">Not provided</dd>
+            <dt>Mobile phone</dt><dd id="summary-phone">Not provided</dd>
+            <dt>Business / organization</dt><dd id="summary-organization">Not provided</dd>
+            <dt>Application date</dt><dd id="summary-timestamp">Not provided</dd>
+        </dl>
+        <p><a class="back-to-home" href="index.html">Return to Chamber Home</a></p>
+    </section>
+</main>
+
+<footer>
+    <p>Contact: <a href="mailto:ayd23002@byui.edu">ayd23002@byui.edu</a></p>
+    <p>© <span id="currentyear"></span> Istanbul Chamber of Commerce | Semih Aydin</p>
+    <p>Project for WDD 231 - Last Modified: <span id="lastModified"></span></p>
+</footer>
 </body>
 </html>
