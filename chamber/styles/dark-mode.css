@@ -1,1 +1,24 @@
-body.dark-mode{background:#12191d;color:#f4f7f8}body.dark-mode .home-card,body.dark-mode .forecast-card,body.dark-mode .spotlight-card{background:#1d292f;border-color:#52656d}body.dark-mode .home-card-content,body.dark-mode .spotlight-card{color:#f4f7f8}body.dark-mode .weather-temp,body.dark-mode .forecast-card p:first-of-type{color:#e9c46a}body.dark-mode .spotlight-card .membership{color:#f4c95d}body.dark-mode .spotlight-card a{color:#8ed9d0}
+body.dark-mode {
+    background: #12191d;
+    color: var(--dark-text);
+}
+
+body.dark-mode .home-card,
+body.dark-mode .forecast-card,
+body.dark-mode .spotlight-card {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+}
+
+body.dark-mode .home-card-content,
+body.dark-mode .spotlight-card {
+    color: var(--dark-text);
+}
+
+body.dark-mode .weather-temp,
+body.dark-mode .forecast-card p:first-of-type {
+    color: var(--accent);
+}
+
+body.dark-mode .spotlight-card .membership { color: var(--accent); }
+body.dark-mode .spotlight-card a { color: #8ed9d0; }
