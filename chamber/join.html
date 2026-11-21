@@ -16,12 +16,15 @@
     <link rel="stylesheet" href="styles/medium.css" media="(min-width: 768px)">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 1200px)">
     <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/join.css">
     <script src="scripts/site.js" defer></script>
     <script src="scripts/join.js" defer></script>
 </head>
 <body>
 <header>
-    <div class="logo"><img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100"></div>
+    <div class="logo">
+        <img src="images/logo-new.png" alt="Istanbul Chamber of Commerce logo" width="100" height="100">
+    </div>
     <div class="header-content">
         <p class="site-title">Istanbul Chamber of Commerce</p>
         <nav id="primary-navigation" aria-label="Primary navigation">
@@ -45,73 +48,93 @@
 <main class="join-main">
     <section class="join-intro" aria-labelledby="join-title">
         <h1 id="join-title">Become a Chamber Member</h1>
-        <p>Build valuable connections, increase your visibility, and access resources that support your business in Istanbul. Choose the membership level that fits your organization.</p>
+        <p>Build valuable connections, increase your visibility, and access resources that support your business in Istanbul.</p>
     </section>
 
     <div class="join-layout">
         <form class="membership-form" action="thankyou.html" method="get">
             <h2>Membership Application</h2>
+
             <fieldset>
                 <legend>Applicant Information</legend>
 
-                <label for="firstName">First name</label>
-                <input type="text" id="firstName" name="firstName" title="Enter your first name." autocomplete="given-name" required>
+                <label class="form-field" for="firstName">
+                    <span>First name</span>
+                    <input type="text" id="firstName" name="firstName" title="Enter your first name." autocomplete="given-name" required>
+                </label>
 
-                <label for="lastName">Last name</label>
-                <input type="text" id="lastName" name="lastName" title="Enter your last name." autocomplete="family-name" required>
+                <label class="form-field" for="lastName">
+                    <span>Last name</span>
+                    <input type="text" id="lastName" name="lastName" title="Enter your last name." autocomplete="family-name" required>
+                </label>
 
-                <label for="title">Organizational title</label>
-                <input type="text" id="title" name="title" title="Use at least seven letters, hyphens, or spaces." autocomplete="organization-title" pattern="[A-Za-z -]{7,}" placeholder="e.g. Sales Manager">
+                <label class="form-field" for="title">
+                    <span>Organizational title</span>
+                    <input type="text" id="title" name="title" title="Use at least seven letters, hyphens, or spaces." autocomplete="organization-title" pattern="[A-Za-z -]{7,}" placeholder="e.g. Sales Manager">
+                </label>
 
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" title="Enter a valid business email address." autocomplete="email" placeholder="name@example.com" required>
+                <label class="form-field" for="email">
+                    <span>Email address</span>
+                    <input type="email" id="email" name="email" title="Enter a valid business email address." autocomplete="email" placeholder="name@example.com" required>
+                </label>
 
-                <label for="phone">Mobile phone number</label>
-                <input type="tel" id="phone" name="phone" title="Enter a mobile phone number where we can contact you." autocomplete="tel" required>
+                <label class="form-field" for="phone">
+                    <span>Mobile phone number</span>
+                    <input type="tel" id="phone" name="phone" title="Enter a mobile phone number where we can contact you." autocomplete="tel" required>
+                </label>
             </fieldset>
 
             <fieldset>
                 <legend>Organization Information</legend>
 
-                <label for="organization">Business or organization name</label>
-                <input type="text" id="organization" name="organization" title="Enter your business or organization name." autocomplete="organization" required>
+                <label class="form-field" for="organization">
+                    <span>Business or organization name</span>
+                    <input type="text" id="organization" name="organization" title="Enter your business or organization name." autocomplete="organization" required>
+                </label>
 
-                <label for="membershipLevel">Membership level</label>
-                <select id="membershipLevel" name="membershipLevel" title="Choose a chamber membership level." required>
-                    <option value="" selected disabled>Select a membership level</option>
-                    <option value="np">NP Membership (Non-profit, free)</option>
-                    <option value="bronze">Bronze Membership</option>
-                    <option value="silver">Silver Membership</option>
-                    <option value="gold">Gold Membership</option>
-                </select>
+                <label class="form-field" for="membershipLevel">
+                    <span>Membership level</span>
+                    <select id="membershipLevel" name="membershipLevel" title="Choose a chamber membership level." required>
+                        <option value="" selected disabled>Select a membership level</option>
+                        <option value="np">NP Membership (Non-profit, free)</option>
+                        <option value="bronze">Bronze Membership</option>
+                        <option value="silver">Silver Membership</option>
+                        <option value="gold">Gold Membership</option>
+                    </select>
+                </label>
 
-                <label for="description">Business or organization description</label>
-                <textarea id="description" name="description" title="Briefly describe your organization." rows="4" placeholder="Tell us about your organization and its work."></textarea>
+                <label class="form-field" for="description">
+                    <span>Business or organization description</span>
+                    <textarea id="description" name="description" title="Briefly describe your organization." rows="5" placeholder="Tell us about your organization and its work."></textarea>
+                </label>
             </fieldset>
 
             <input type="hidden" id="timestamp" name="timestamp">
-            <button type="submit">Submit Membership Application</button>
+            <input class="submit-button" type="submit" value="Submit Membership Application">
         </form>
 
         <section class="membership-levels" aria-labelledby="levels-title">
             <h2 id="levels-title">Membership Levels</h2>
-            <p>Explore the benefits included at each level.</p>
+            <p>Compare the benefits and choose the level that best fits your organization.</p>
 
             <article class="membership-card">
                 <h3>NP Membership</h3>
                 <p>For eligible non-profit organizations. No membership fee.</p>
                 <a href="#np-dialog" data-dialog="np-dialog">View benefits</a>
             </article>
+
             <article class="membership-card">
                 <h3>Bronze Membership</h3>
                 <p>A practical starting point for growing local businesses.</p>
                 <a href="#bronze-dialog" data-dialog="bronze-dialog">View benefits</a>
             </article>
+
             <article class="membership-card">
                 <h3>Silver Membership</h3>
                 <p>More visibility, learning opportunities, and event access.</p>
                 <a href="#silver-dialog" data-dialog="silver-dialog">View benefits</a>
             </article>
+
             <article class="membership-card">
                 <h3>Gold Membership</h3>
                 <p>Premium promotion and priority access to chamber activities.</p>
