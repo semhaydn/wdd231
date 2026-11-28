@@ -1,7 +1,7 @@
 .join-main { padding: 1.5rem 1rem 2rem; }
 .join-intro { max-width: 850px; margin: 0 auto 2rem; text-align: center; }
 .join-intro h1 { margin-bottom: 0.5rem; color: var(--primary); font-size: clamp(1.8rem, 4vw, 2.5rem); }
-.join-intro p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+.join-intro p { margin: 0; color: #3f4b55; font-size: 1.05rem; }
 
 .join-layout {
     display: grid;
@@ -119,6 +119,7 @@ dialog.membership-dialog::backdrop { background: #0f172aa6; }
 /* Keep the W04 join page readable when site dark mode is enabled. */
 body.dark-mode .join-intro h1,
 body.dark-mode .join-intro p,
+body.dark-mode .membership-levels > p,
 body.dark-mode .membership-form h2,
 body.dark-mode .membership-levels h2,
 body.dark-mode .membership-levels > p,
